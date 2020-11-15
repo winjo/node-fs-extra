@@ -17,6 +17,8 @@ const mochaOpts = {
 const mocha = new Mocha(mochaOpts)
 const testExt = '.test.js'
 
+process.env.NODE_ENV = 'test'
+
 klaw('./lib').on('readable', function () {
   let item
   while ((item = this.read())) {
@@ -26,6 +28,6 @@ klaw('./lib').on('readable', function () {
   }
 }).on('end', () => {
   mocha.run(failures => {
-    require('./').remove(path.join(os.tmpdir(), 'fs-extra'), () => process.exit(failures))
+    require('./lib').remove(path.join(os.tmpdir(), 'fs-extra'), () => process.exit(failures))
   })
 })

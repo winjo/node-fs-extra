@@ -1,14 +1,14 @@
 {
-  "name": "fs-extra",
-  "version": "9.0.1",
+  "name": "fs-extra-factory",
+  "version": "0.1.0",
   "description": "fs-extra contains methods that aren't included in the vanilla Node.js fs package. Such as recursive mkdir, copy, and remove.",
   "engines": {
     "node": ">=10"
   },
-  "homepage": "https://github.com/jprichardson/node-fs-extra",
+  "homepage": "https://github.com/winjo/node-fs-extra",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jprichardson/node-fs-extra"
+    "url": "https://github.com/winjo/node-fs-extra"
   },
   "keywords": [
     "fs",
@@ -37,12 +37,16 @@
   "author": "JP Richardson <jprichardson@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "at-least-node": "^1.0.0",
-    "graceful-fs": "^4.2.0",
-    "jsonfile": "^6.0.1",
     "universalify": "^2.0.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-replace": "^2.3.4",
+    "@types/fs-extra": "^9.0.4",
+    "browserfs": "^1.4.3",
     "coveralls": "^3.0.0",
     "klaw": "^2.1.1",
     "klaw-sync": "^3.0.2",
@@ -51,12 +55,16 @@
     "nyc": "^15.0.0",
     "proxyquire": "^2.0.1",
     "read-dir-files": "^0.1.1",
+    "rollup": "^2.33.2",
     "standard": "^14.1.0"
   },
-  "main": "./lib/index.js",
+  "main": "./dist/fs-extra.js",
+  "typings": "index.d.ts",
   "files": [
     "lib/",
-    "!lib/**/__tests__/"
+    "dist/",
+    "!lib/**/__tests__/",
+    "index.d.ts"
   ],
   "scripts": {
     "full-ci": "npm run lint && npm run coverage",
@@ -65,6 +73,7 @@
     "lint": "standard",
     "test-find": "find ./lib/**/__tests__ -name *.test.js | xargs mocha",
     "test": "npm run lint && npm run unit",
-    "unit": "node test.js"
+    "unit": "node test.js",
+    "build": "rollup -c"
   }
 }
