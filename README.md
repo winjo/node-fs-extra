@@ -1,4 +1,4 @@
-Node.js: fs-extra-factory
+fs-extra-factory
 =================
 
 this is library is mainly built for the browser environment，now `fs-extra-factory` is export a factory, you should pass external module of `fs`, `path`, `process`, `buffer`, `assert`，so we can use [browserfs](https://github.com/jvilk/BrowserFS) with this library

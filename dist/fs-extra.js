@@ -50,7 +50,7 @@ module.exports = function fsExtraFactory(__EXTERNAL__) {
             throw new Error('external module is not exist');
           }
 
-          if (!obj.name) {
+          if (!obj[name]) {
             throw new Error(name + ' is not in external module');
           }
 
