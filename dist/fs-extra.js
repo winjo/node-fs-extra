@@ -242,7 +242,7 @@ module.exports = function fsExtraFactory(__EXTERNAL__) {
               // it is caught below, and the original error is thrown
               throw new Error('The path is not a directory');
             }
-          } catch {
+          } catch (err) {
             throw error;
           }
         }
@@ -282,7 +282,7 @@ module.exports = function fsExtraFactory(__EXTERNAL__) {
               // it is caught below, and the original error is thrown
               throw new Error('The path is not a directory');
             }
-          } catch {
+          } catch (err) {
             throw error;
           }
         }
@@ -1135,7 +1135,7 @@ module.exports = function fsExtraFactory(__EXTERNAL__) {
           try {
             const ret = options.rmdirSync(p, options);
             return ret;
-          } catch {}
+          } catch (err) {}
         } while (Date.now() - startTime < 500); // give up after 500ms
 
       } else {
@@ -1180,7 +1180,7 @@ module.exports = function fsExtraFactory(__EXTERNAL__) {
 
       try {
         items = fs$3.readdirSync(dir);
-      } catch {
+      } catch (err) {
         return mkdirs.mkdirsSync(dir);
       }
 
@@ -1243,7 +1243,7 @@ module.exports = function fsExtraFactory(__EXTERNAL__) {
 
       try {
         stats = fs$4.statSync(file);
-      } catch {}
+      } catch (err) {}
 
       if (stats && stats.isFile()) return;
       const dir = path$6.dirname(file);
@@ -1449,7 +1449,7 @@ module.exports = function fsExtraFactory(__EXTERNAL__) {
 
       try {
         stats = fs$7.lstatSync(srcpath);
-      } catch {
+      } catch (err) {
         return 'file';
       }
 
